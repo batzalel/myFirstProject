@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bopl Battle Recommender</title>
+</head>
+
+<body>
+
+    <h1>Choose exactly 3 powers!</h1>
+
+    <form action="/combine" method="POST">
+
+        <label><input type="checkbox" name="powers" value="Beam" class="power-checkbox"> Beam</label><br>
+        <label><input type="checkbox" name="powers" value="Black Hole" class="power-checkbox"> Black Hole</label><br>
+        <label><input type="checkbox" name="powers" value="Blink Gun" class="power-checkbox"> Blink Gun</label><br>
+        <label><input type="checkbox" name="powers" value="Bow" class="power-checkbox"> Bow</label><br>
+        <label><input type="checkbox" name="powers" value="Dash" class="power-checkbox"> Dash</label><br>
+        <label><input type="checkbox" name="powers" value="Drill" class="power-checkbox"> Drill</label><br>
+        <label><input type="checkbox" name="powers" value="Duplicator" class="power-checkbox"> Duplicator</label><br>
+        <label><input type="checkbox" name="powers" value="Engine" class="power-checkbox"> Engine</label><br>
+        <label><input type="checkbox" name="powers" value="Grappling Hook" class="power-checkbox"> Grappling Hook</label><br>
+        <label><input type="checkbox" name="powers" value="Grenade" class="power-checkbox"> Grenade</label><br>
+        <label><input type="checkbox" name="powers" value="Growth Ray" class="power-checkbox"> Growth Ray</label><br>
+        <label><input type="checkbox" name="powers" value="Gust" class="power-checkbox"> Gust</label><br>
+        <label><input type="checkbox" name="powers" value="Invisibility" class="power-checkbox"> Invisibility</label><br>
+        <label><input type="checkbox" name="powers" value="Magnet Gun" class="power-checkbox"> Magnet Gun</label><br>
+        <label><input type="checkbox" name="powers" value="Meteor" class="power-checkbox"> Meteor</label><br>
+        <label><input type="checkbox" name="powers" value="Mine" class="power-checkbox"> Mine</label><br>
+        <label><input type="checkbox" name="powers" value="Missile" class="power-checkbox"> Missile</label><br>
+        <label><input type="checkbox" name="powers" value="Platform" class="power-checkbox"> Platform</label><br>
+        <label><input type="checkbox" name="powers" value="Push" class="power-checkbox"> Push</label><br>
+        <label><input type="checkbox" name="powers" value="Random" class="power-checkbox"> Random</label><br>
+        <label><input type="checkbox" name="powers" value="Revival" class="power-checkbox"> Revival</label><br>
+        <label><input type="checkbox" name="powers" value="Rock" class="power-checkbox"> Rock</label><br>
+        <label><input type="checkbox" name="powers" value="Roll" class="power-checkbox"> Roll</label><br>
+        <label><input type="checkbox" name="powers" value="Shrink Ray" class="power-checkbox"> Shrink Ray</label><br>
+        <label><input type="checkbox" name="powers" value="Smoke" class="power-checkbox"> Smoke</label><br>
+        <label><input type="checkbox" name="powers" value="Spike" class="power-checkbox"> Spike</label><br>
+        <label><input type="checkbox" name="powers" value="Teleport" class="power-checkbox"> Teleport</label><br>
+        <label><input type="checkbox" name="powers" value="Tesla Coil" class="power-checkbox"> Tesla Coil</label><br>
+        <label><input type="checkbox" name="powers" value="Throw" class="power-checkbox"> Throw</label><br>
+        <label><input type="checkbox" name="powers" value="Time Stop" class="power-checkbox"> Time Stop</label><br>
+
+        <br>
+        <button type="submit">Combine!</button>
+    </form>
+
+    <script>
+        // 1. Grab all the checkboxes on the page
+        const checkboxes = document.querySelectorAll('.power-checkbox');
+
+        // 2. Add a 'click' listener to every single checkbox
+        checkboxes.forEach(function (box) {
+            box.addEventListener('change', function () {
+
+                // 3. Count how many are currently checked
+                let checkedCount = document.querySelectorAll('.power-checkbox:checked').length;
+
+                // 4. If 3 are checked, disable the unchecked ones. Otherwise, enable them all.
+                checkboxes.forEach(function (otherBox) {
+                    if (checkedCount >= 3) {
+                        if (!otherBox.checked) {
+                            otherBox.disabled = true; // Lock it!
+                        }
+                    } else {
+                        otherBox.disabled = false; // Unlock it!
+                    }
+                });
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>
